@@ -39,8 +39,14 @@
        [[{:which 27} ;; escape
          ]]}]))
 
-  (defroute "/slides" []
-    (re-frame/dispatch [::events/set-active-panel :slides]))
+  (defroute "/slide-1" []
+    (re-frame/dispatch [::events/set-active-panel :slide-1]))
+
+  (defroute "/slide-2" []
+    (re-frame/dispatch [::events/set-active-panel :slide-2]))
+
+  (defroute "/slide-3" []
+    (re-frame/dispatch [::events/set-active-panel :slide-3]))
 
   (defroute "/about" []
     (re-frame/dispatch [::events/set-active-panel :about-panel]))

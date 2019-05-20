@@ -6,7 +6,7 @@
    [breaking-point.core :as bp]
    [cloj-tp.events :as events]
    [cloj-tp.routes :as routes]
-   [cloj-tp.views :as views]
+   [cloj-tp.views.core :as views]
    [cloj-tp.config :as config]
    ))
 

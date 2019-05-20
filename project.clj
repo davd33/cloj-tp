@@ -18,7 +18,10 @@
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"
                                     "test/js"]
 
-  :figwheel {:css-dirs ["resources/public/css"]}
+  :figwheel {:http-server-root "public"
+             :nrepl-port 7002
+             :nrepl-middleware ["cider.piggieback/wrap-cljs-repl"]
+             :css-dirs ["resources/public/css"]}
 
   :less {:source-paths ["less"]
          :target-path  "resources/public/css"}
@@ -30,10 +33,14 @@
    {:dependencies [[binaryage/devtools "0.9.10"]
                    [day8.re-frame/re-frame-10x "0.3.7-react16"]
                    [day8.re-frame/tracing "0.5.1"]
-                   [figwheel-sidecar "0.5.16"]
+                   [figwheel-sidecar "0.5.18"]
+                   [nrepl "0.3.1"]
                    [cider/piggieback "0.3.5"]]
 
+    :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
+
     :plugins      [[lein-figwheel "0.5.18"]
+                   [lein-cljsbuild "1.1.7"]
                    [lein-doo "0.1.8"]]}
    :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}
    }
