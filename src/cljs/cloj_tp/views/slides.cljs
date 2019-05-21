@@ -7,29 +7,14 @@
    {:style {:background "lightgray"}}
    text])
 
-(defn slide
-  [{c :children n :next}]
-  (let [children (into c [re-com/hyperlink-href
-                          :label "Next slide"
-                          :href (str "#/" n)])
-        box-children (map #(into %1 :key %2) (zipmap children (range 0 (count children))))]
-    [re-com/v-box
-     :children box-children]))
-
 (defn slide-3 []
-  [slide
-   {:children [[:h1
-                "Re-frame is cool"]]
-    :next ""}])
+  [re-com/v-box
+   :children [[citation "Re-frame is cool - slide 3"]]])
 
 (defn slide-2 []
-  [slide
-   {:children [[:h1
-                ""]]
-    :next "slide-3"}])
+  [re-com/v-box
+   :children [[citation "Re-frame is cool - slide 2"]]])
 
 (defn slide-1 []
-  [slide
-   {:next "slide-2"
-    :children [[:h1
-                "Functional programming and Clojure!"]]}])
+  [re-com/v-box
+   :children [[citation "Re-frame is cool - slide 1"]]])

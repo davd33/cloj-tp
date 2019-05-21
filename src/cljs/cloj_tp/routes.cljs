@@ -7,8 +7,7 @@
    [goog.history.EventType :as EventType]
    [re-frame.core :as re-frame]
    [re-pressed.core :as rp]
-   [cloj-tp.events :as events]
-   ))
+   [cloj-tp.events :as events]))
 
 (defn hook-browser-navigation! []
   (doto (History.)
@@ -17,6 +16,15 @@
      (fn [event]
        (secretary/dispatch! (.-token event))))
     (.setEnabled true)))
+
+(defn add-slides-keyboard-events
+  []
+  (re-frame/dispatch
+   [::rp/set-keydown-rules
+    {:event-keys [[[::events/previous-slide] ; 'l'
+                   [{:which 72}]]
+                  [[::events/next-slide] ; 'h'
+                   [{:which 76}]]]}]))
 
 (defn app-routes []
   (secretary/set-config! :prefix "#")
@@ -40,17 +48,22 @@
          ]]}]))
 
   (defroute "/slide-1" []
-    (re-frame/dispatch [::events/set-active-panel :slide-1]))
+    (re-frame/dispatch [::events/set-active-panel "slide-1"])
+    (add-slides-keyboard-events))
 
   (defroute "/slide-2" []
-    (re-frame/dispatch [::events/set-active-panel :slide-2]))
+    (re-frame/dispatch [::events/set-active-panel "slide-2"])
+    (add-slides-keyboard-events))
 
   (defroute "/slide-3" []
-    (re-frame/dispatch [::events/set-active-panel :slide-3]))
+    (re-frame/dispatch [::events/set-active-panel :slide-3])
+    (add-slides-keyboard-events))
 
   (defroute "/about" []
     (re-frame/dispatch [::events/set-active-panel :about-panel]))
 
 
   ;; --------------------
+
+
   (hook-browser-navigation!))
