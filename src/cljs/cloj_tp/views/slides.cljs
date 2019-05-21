@@ -22,7 +22,6 @@
        [:li
         {:key i
          :style {:list-style "none"
-                 :font-size "2em"
                  :text-transform "capitalize"
                  :background (rand-of some-colors)
                  :padding "10px"
@@ -45,12 +44,19 @@
             :width "100%"}}
    slide])
 
+(defn some-space
+  []
+  [:div
+   {:style {:margin-top "1.5em"}}
+   ""])
+
 (defn slide-1 []
   [slide-container
    [re-com/v-box
     :children [[:h1
                 "Clojure / ClojureScript"]
                [:em "David Rueda"]
+               [some-space]
                [:h3
                 {:style {:color (rand-of some-colors)}}
                 "... and some functional programming!"]]]])
@@ -59,15 +65,20 @@
   [slide-container
    [re-com/v-box
     :children [[:h1 "Functional Programming"]
-               [list-of-cool-concepts ["Pure functions"
-                                       "High Order functions"
-                                       "Immutability"
-                                       "Recursion"
-                                       "More"
-                                       "and more"
-                                       "but also"]]]]])
+               [:em "or a myriad of new concepts"]
+               [some-space]
+               [list-of-cool-concepts (shuffle ["Pure functions"
+                                                "Lambda functions"
+                                                "High Order functions"
+                                                "Immutability"
+                                                "Recursion"
+                                                "Composition"
+                                                "Lazy evaluation"
+                                                "Closures"
+                                                "Partial application"])]]]])
 
 (defn slide-3 []
   [slide-container
    [re-com/v-box
-    :children [[citation "Re-frame is cool - slide 3"]]]])
+    :children [[:h1 "What is clojure?"]
+               [citation "Re-frame is cool - slide 3"]]]])
