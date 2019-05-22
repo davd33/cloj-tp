@@ -32,7 +32,8 @@
 (defn citation
   [text]
   [:q
-   {:style {:background "lightgray"}}
+   {:style {:max-width "80vw"
+            :text-align "center"}}
    text])
 
 (defn slide-container
@@ -50,21 +51,27 @@
    {:style {:margin-top "1.5em"}}
    ""])
 
+(defn fun-h1 [title]
+  [:h1
+   {:style {:text-shadow (str "5px 5px 0 " (rand-of some-colors))}}
+   title])
+
 (defn slide-1 []
   [slide-container
    [re-com/v-box
-    :children [[:h1
-                "Clojure / ClojureScript"]
+    :children [[fun-h1 "Clojure / ClojureScript"]
                [:em "David Rueda"]
                [some-space]
                [:h3
                 {:style {:color (rand-of some-colors)}}
-                "... and some functional programming!"]]]])
+                "... and some "
+                [:strong "FUN"]
+                " ctional programming!"]]]])
 
 (defn slide-2 []
   [slide-container
    [re-com/v-box
-    :children [[:h1 "Functional Programming"]
+    :children [[fun-h1 "Functional Programming"]
                [:em "or a myriad of new concepts"]
                [some-space]
                [list-of-cool-concepts (shuffle ["Pure functions"
@@ -80,5 +87,49 @@
 (defn slide-3 []
   [slide-container
    [re-com/v-box
-    :children [[:h1 "What is clojure?"]
-               [citation "Re-frame is cool - slide 3"]]]])
+    :children [[fun-h1 "What is clojure?"]
+               [some-space]
+               [citation (str "Rich Hickey designed Clojure to specifically address "
+                              "the problems that develop from shared access to mutable state. "
+                              "In fact, Clojure embodies a very clear conception of state that "
+                              "makes it inherently safer for concurrency than most popular "
+                              "programming languages. It's safe all the way down to its "
+                              "meta-freaking-physics.")]]]])
+
+(defn slide-4 []
+  [slide-container
+   [re-com/v-box
+    :children [[fun-h1 "Tasks"]
+               [:em "how to manage concurrency"]
+               [some-space]
+               [list-of-cool-concepts (shuffle ["Future"
+                                                "Fire and forget"
+                                                "Delay"
+                                                "wait until my command"
+                                                "Promise"
+                                                "come back with the ticket"])]]]])
+
+(defn slide-5 []
+  [slide-container
+   [re-com/v-box
+    :children [[fun-h1 "a non-lisp eval"]
+               [:img
+                {:alt "a non-lisp eval"
+                 :src "./images/clojure/non-lisp-eval.png"}]]]])
+
+(defn slide-6 []
+  [slide-container
+   [re-com/v-box
+    :children [[fun-h1 "a LISP eval"]
+               [:img
+                {:alt "this is a LISP eval"
+                 :src "./images/clojure/lisp-eval.png"}]]]])
+
+(defn slide-7 []
+  [slide-container
+   [re-com/v-box
+    :children [[fun-h1 "Extend clojure with macros"]
+               [:img
+                {:alt "a sum macro"
+                 :src "./images/clojure/whole-shebang.png"}]]]])
+

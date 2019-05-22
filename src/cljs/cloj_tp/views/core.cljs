@@ -1,11 +1,13 @@
 (ns cloj-tp.views.core
-  (:require [cloj-tp.subs :as subs]
+  (:require [cloj-tp.events :as events]
+            [cloj-tp.subs :as subs]
             [cloj-tp.views.about :refer [about-panel]]
             [cloj-tp.views.home :refer [home-panel]]
+            [cloj-tp.views.slides
+             :refer
+             [slide-1 slide-2 slide-3 slide-4 slide-5 slide-6 slide-7]]
             [re-com.core :as re-com]
-            [cloj-tp.views.slides :refer [slide-1 slide-2 slide-3]]
-            [re-frame.core :as re-frame]
-            [cloj-tp.events :as events]))
+            [re-frame.core :as re-frame]))
 
 (defn page-not-found
   [panel-name]
@@ -21,9 +23,13 @@
 
 (defn- panels [panel-name]
   (case panel-name
-    "slide-1"     [slide-1]
-    "slide-2"     [slide-2]
-    "slide-3"     [slide-3]
+    "slide-1"    [slide-1]
+    "slide-2"    [slide-2]
+    "slide-3"    [slide-3]
+    "slide-4"    [slide-4]
+    "slide-5"    [slide-5]
+    "slide-6"    [slide-6]
+    "slide-7"    [slide-7]
     :home-panel  [home-panel]
     :about-panel [about-panel]
     [page-not-found panel-name]))

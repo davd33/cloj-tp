@@ -56,7 +56,23 @@
     (add-slides-keyboard-events))
 
   (defroute "/slide-3" []
-    (re-frame/dispatch [::events/set-active-panel :slide-3])
+    (re-frame/dispatch [::events/set-active-panel "slide-3"])
+    (add-slides-keyboard-events))
+
+  (defroute "/slide-4" []
+    (re-frame/dispatch [::events/set-active-panel "slide-4"])
+    (add-slides-keyboard-events))
+
+  (defroute "/slide-5" []
+    (re-frame/dispatch [::events/set-active-panel "slide-5"])
+    (add-slides-keyboard-events))
+
+  (defroute "/slide-6" []
+    (re-frame/dispatch [::events/set-active-panel "slide-6"])
+    (add-slides-keyboard-events))
+
+  (defroute "/slide-7" []
+    (re-frame/dispatch [::events/set-active-panel "slide-7"])
     (add-slides-keyboard-events))
 
   (defroute "/about" []
