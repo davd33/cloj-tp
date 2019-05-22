@@ -112,7 +112,7 @@
                       [some-space]
                       [list-of-cool-concepts (shuffle ["Pure functions"
                                                        "Lambda functions"
-                                                       "High Order functions"
+                                                       "Higher Order functions"
                                                        "Immutability"
                                                        "Recursion"
                                                        "Composition"
