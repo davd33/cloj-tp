@@ -181,7 +181,22 @@
 (defn a-lisp-for-the-jvm []
   [slide-container
    (v-box [re-com/v-box
-           :children [[fun-h1 "Clojure runs on the JVM!"]]])])
+           :children [[fun-h1 "Clojure runs on the JVM!"]
+                      [:div
+                       {:style {:display "flex"
+                                :margin "230px 0"}}
+                       [:img
+                        {:alt "java"
+                         :style {:width (px 255)
+                                 :height (px 255)
+                                 :margin "auto"}
+                         :src "./images/clojure/icons8-java.svg"}]
+                       [:img
+                        {:alt "clojure"
+                         :style {:width (px 256)
+                                 :height (px 256)
+                                 :margin "auto"}
+                         :src "./images/clojure/Clojure_logo.svg"}]]]])])
 
 (def slides {1 index-slide
              2 a-modern-lisp-slide
