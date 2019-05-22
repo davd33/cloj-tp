@@ -47,33 +47,11 @@
        [[{:which 27} ;; escape
          ]]}]))
 
-  (defroute "/slide-1" []
-    (re-frame/dispatch [::events/set-active-panel "slide-1"])
-    (add-slides-keyboard-events))
-
-  (defroute "/slide-2" []
-    (re-frame/dispatch [::events/set-active-panel "slide-2"])
-    (add-slides-keyboard-events))
-
-  (defroute "/slide-3" []
-    (re-frame/dispatch [::events/set-active-panel "slide-3"])
-    (add-slides-keyboard-events))
-
-  (defroute "/slide-4" []
-    (re-frame/dispatch [::events/set-active-panel "slide-4"])
-    (add-slides-keyboard-events))
-
-  (defroute "/slide-5" []
-    (re-frame/dispatch [::events/set-active-panel "slide-5"])
-    (add-slides-keyboard-events))
-
-  (defroute "/slide-6" []
-    (re-frame/dispatch [::events/set-active-panel "slide-6"])
-    (add-slides-keyboard-events))
-
-  (defroute "/slide-7" []
-    (re-frame/dispatch [::events/set-active-panel "slide-7"])
-    (add-slides-keyboard-events))
+  (dotimes [n (count cloj-tp.views.slides/slides)]
+    (let [slide-name (str "slide-" (inc n))]
+      (defroute (str "/" slide-name) []
+        (re-frame/dispatch [::events/set-active-panel slide-name])
+        (add-slides-keyboard-events))))
 
   (defroute "/about" []
     (re-frame/dispatch [::events/set-active-panel :about-panel]))

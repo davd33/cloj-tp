@@ -16,7 +16,7 @@
                   slide-matches (re-matches #"slide-([0-9]+)" active-panel)
                   slide-index (int (last slide-matches))]
               (if (not (empty? slide-matches))
-                {:dispatch [::set-slide-panel (inc slide-index)]}))))
+                {:dispatch [::set-slide-panel (min (count cloj-tp.views.slides/slides) (inc slide-index))]}))))
 
 (re-frame/reg-event-fx
  ::previous-slide
